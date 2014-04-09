@@ -1,0 +1,106 @@
+/*
+  * List Style for the Birds Post Type - Page template
+  * Based on Brad Frost Pattern - List with Thumbnails 2
+  * http://codepen.io/bradfrost/full/GlrHv
+*/
+.list {
+  padding: 0;
+  margin: 0;
+}
+.list li {
+  border-bottom: 1px solid #ccc;
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: @white;
+  margin: 0 0 0.5em 0;
+  a {
+    color: @dark-gray;
+  }
+  a:hover {
+    color: @blue;
+    text-decoration: none;
+  }
+}
+.inner {
+  display: table-row;
+  overflow: hidden;
+  padding: 0.5em;
+}
+figure {
+  display: table-cell;
+  vertical-align: middle;
+  width: 40%;
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding-right: 1em;
+  }
+}
+.li-text {
+  display: table-cell;
+  vertical-align: middle;
+  width: 60%;
+  h3 {
+    font-weight: 400;
+  }
+}
+@media (min-width: @screen-sm-min) {
+  .list {
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .list li {
+    padding: 0.5em;
+    display: block;
+    width: 48%;
+    float: left;
+    border: 0;
+    margin: 0 0.8em 0.8em 0;
+  }
+  .inner {
+    display: block;
+  }
+  .li-text,
+  .inner {
+    display: block;
+    width: auto;
+  }
+  figure {
+    img {
+      padding-right: 0;
+    }
+  }
+  .li-text {
+    padding: 0.5em 0;
+  }
+}
+@media (min-width: @screen-lg-min) {
+  .list li {
+    width: 32%;
+  }
+}
+/*
+  * General Styles for the Birds Post Type - Page template, content, and page
+*/
+.page-header {
+  font-weight: 400;
+  padding-bottom: 0.3em;
+  margin: .8em 0 .5em;
+  border-bottom: none;
+}
+.birds {
+  padding-bottom: 1.5em;
+}
+.attachment-birds-lg {
+  padding-bottom: 3em;
+}
+.widgets {
+  font-size: 16px;
+  h3 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+  }
+}

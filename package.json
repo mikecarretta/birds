@@ -1,0 +1,16 @@
+{
+  "name": "birds",
+  "version": "0.0.2",
+  "description": "The birds list theme for wordpress",
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-less": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-watch": "~0.5.3",
+    "bower": "*",
+    "grunt-exec": "*"
+  },
+  "author": "Mike Carretta",
+  "license": "MIT"
+}

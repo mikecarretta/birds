@@ -1,0 +1,36 @@
+/* Navbar styles */
+@navbar-inverse-bg: #383838;
+@navbar-inverse-link-active-bg: transparent;
+
+.navbar-inverse {
+  min-height: 70px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  margin-bottom: 0;
+}
+.navbar-header-el {
+  border-bottom: 3px solid @cyan;
+  background-color: @navbar-inverse-bg;
+}
+
+.navbar-brand img {
+  margin-top: -16px;
+}
+
+.navbar-static-top {
+  border-width: 0;
+}
+/* Navbar Search Button */
+.btn-search {
+  color: @cyan;
+  background-color: @navbar-inverse-bg;
+  &:hover,
+  &:focus {
+    color: @cyan;
+  }
+}
+.search-field {
+  background-color: @lt-gray;
+  width: 88%;
+  display: inline-block;
+}
