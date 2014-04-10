@@ -68,8 +68,14 @@ $largePhoto = 'birds-lg';
       </div>
 
       <div class="row">
-        <div class="col-md-12 post-nav">
-          <?php birds_post_nav(); ?>
+        <div class="col-md-12">
+          <hr>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+        <?php birds_post_nav(); ?>
         </div>
       </div>
 

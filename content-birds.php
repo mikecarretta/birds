@@ -7,24 +7,39 @@
 <article id="post-<?php the_ID(); ?>">
   <section class="post_content birds" itemprop="articleBody">
     <header>
-      <h1 class="page-header"><?php the_title(); ?></h1>
+      <h1 class="page-header">
+        <?php the_title(); ?>
+        <span class="badge">
+          <?php
+          $published_posts = wp_count_posts( 'birds' )->publish;
+          echo ($published_posts);
+          ?>
+        </span>
+      </h1>
     </header>
     <ul class="list img-list">
 
     <?php
     $thumb = 'birds-sm';
-    $args = array(
-      'post_type' => 'birds',
-      'posts_per_page' => 18,
-      'orderby' => 'name',
-      'order' => 'ASC'
-    );
-    $birds = new WP_Query( $args );
+    if ( !is_tax() ) {
+      // WP 3.0 PAGED BUG FIX
+      if ( get_query_var( 'paged' ) )
+        $paged = get_query_var( 'paged' );
+      elseif ( get_query_var( 'page' ) )
+        $paged = get_query_var( 'page' );
+      else
+        $paged = 1;
 
-    if( $birds->have_posts() ) {
-      while( $birds->have_posts() ) {
-        $birds->the_post();
+      $args = array( 'post_type' => 'birds',
+        'posts_per_page' => 18,
+        'orderby' => 'name',
+        'order' => 'ASC',
+        'paged' => $paged );
+      query_posts( $args );
+    }
     ?>
+    <?php  if ( have_posts() ) : $count = 0; while ( have_posts() ) : the_post(); $count++; global $post; ?>
+
       <li id="post-<?php the_ID(); ?>">
 
         <a href="<?php the_permalink() ?>" class="inner" title="<?php the_title_attribute(); ?>">
@@ -38,17 +53,20 @@
         </a>
       </li>
 
-    <?php
-      }
-    } else {
-      echo 'Oh ohm no birds!';
-    } ?>
+      <?php endwhile; ?>
+      </ul>
+      <?php else: ?>
 
-    </ul>
-    <div class="row">
-      <div class="col-md-12">
-        <?php birds_navi() ?>
+      <h2 class="title"><?php _e( 'Sorry, no posts matched your criteria.', 'bird-portfolio' ) ?></h2>
+
+      <?php endif; ?>
+
+      <div class="row">
+        <div class="col-md-12">
+          <?php birds_navi(); ?>
+        </div>
       </div>
-    </div>
+
   </section>
 </article>
+<?php wp_reset_query(); ?>
