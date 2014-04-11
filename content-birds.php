@@ -63,7 +63,11 @@
 
       <div class="row">
         <div class="col-md-12">
-          <?php birds_navi(); ?>
+        <?php if (function_exists('wp_pagenavi') ) {
+          wp_pagenavi();
+        } else {
+          birds_paging_nav();
+        } ?>
         </div>
       </div>
 

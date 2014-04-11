@@ -26,21 +26,17 @@ $largePhoto = 'birds-lg';
 
       </div>
 
-      <footer class="entry-footer">
-      <?php edit_post_link( __( 'Edit', 'birds' ), '<span class="edit-link">', '</span>' ); ?>
-      </footer><!-- .entry-footer -->
-
       <div class="col-md-6 widgets">
         <h3 >Overview</h3>
+
         <?php the_content(); ?>
+
+        <?php edit_post_link( __( 'Edit Bird', 'birds' ), '<p class="edit">', '</p>' ); ?>
       </div>
 
       <div class="col-md-3 widgets">
         <h3>Bird Meta Data</h3>
         <div class="entry-meta-custom">
-        <?php if (get_the_term_list( $post->ID, 'bird-name' ) != null ) { ?>
-          <div>Name: <?php echo get_the_term_list( $post->ID, 'bird-name', '', ', ', '' ); ?></div>
-        <?php } ?>
         <?php if (get_the_term_list( $post->ID, 'bird-order' ) != null ) { ?>
           <div>Order: <?php echo get_the_term_list( $post->ID, 'bird-order', '', ', ', '' ); ?></div>
         <?php } ?>
@@ -60,11 +56,14 @@ $largePhoto = 'birds-lg';
         // http://www.kristarella.com/exifography/
         // Download and install to use EXIF for feature photos
 
-        if (function_exists('exifography_display_exif'))
+        if (function_exists('exifography_display_exif')) {
         ?>
           <h3>Feature Image Exif</h3>
         <?php echo exifography_display_exif(); ?>
+        <?php } ?>
+
       <?php endwhile; // end of the loop. ?>
+
       </div>
 
       <div class="row">

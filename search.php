@@ -12,7 +12,7 @@ get_header(); ?>
 
 		<div id="primary" class="container">
 			<div class="row">
-		  	<div class="col-md-9">
+		  	<div class="col-md-12">
 
 				<?php if ( have_posts() ) : ?>
 
@@ -40,16 +40,11 @@ get_header(); ?>
 				<?php endif; ?>
 
 				</div>
-				<div class="col-md-3">
 
-					<?php get_sidebar(); ?>
-
-				</div>
 			</div>
 		</div><!-- #primary -->
 
 	</main><!-- #main -->
 </section><!-- #primary -->
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
