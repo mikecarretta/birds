@@ -14,7 +14,8 @@
 
             <header>
               <h1 class="page-header">
-                <?php single_tag_title(); ?> <small><?php _e( 'Bird Family', 'birds' ); ?></small>
+                <?php single_tag_title(); ?> <span class="label label-info">
+                  <?php _e( 'Bird Family', 'birds' ); ?></span>
               </h1>
             </header>
 
@@ -44,7 +45,7 @@
               <li id="post-<?php the_ID(); ?>">
 
                 <a href="<?php the_permalink() ?>" class="inner" title="<?php the_title_attribute(); ?>">
-                  <figure>
+                  <figure class="inner-img">
                     <?php the_post_thumbnail( $thumb ); ?>
                   </figure>
 

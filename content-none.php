@@ -21,12 +21,18 @@
 		<?php elseif ( is_search() ) : ?>
 
 			<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'birds' ); ?></p>
-			<?php get_search_form(); ?>
+
+			<form method="get" id="searchform" action="<?php bloginfo('url'); ?>/" class="navbar-form">
+      	<input type="text" name="s" id="s" placeholder="<?php _e('Search', 'birds'); ?>" class="form-control search-field"> <button type="submit" class="btn btn-search"><span class="glyphicon glyphicon-search"></span></button>
+      </form>
 
 		<?php else : ?>
 
 			<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'birds' ); ?></p>
-			<?php get_search_form(); ?>
+
+			<form method="get" id="searchform" action="<?php bloginfo('url'); ?>/" class="navbar-form">
+      	<input type="text" name="s" id="s" placeholder="<?php _e('Search', 'birds'); ?>" class="form-control search-field"> <button type="submit" class="btn btn-search"><span class="glyphicon glyphicon-search"></span></button>
+      </form>
 
 		<?php endif; ?>
 	</div><!-- .page-content -->

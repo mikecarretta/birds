@@ -9,11 +9,11 @@
     <header>
       <h1 class="page-header">
         <?php the_title(); ?>
-        <span class="badge">
+        <span class="label label-info">
           <?php
           $published_posts = wp_count_posts( 'birds' )->publish;
           echo ($published_posts);
-          ?>
+          ?> Total Species
         </span>
       </h1>
     </header>
@@ -43,7 +43,7 @@
       <li id="post-<?php the_ID(); ?>">
 
         <a href="<?php the_permalink() ?>" class="inner" title="<?php the_title_attribute(); ?>">
-          <figure>
+          <figure class="inner-img">
             <?php the_post_thumbnail( $thumb ); ?>
           </figure>
 

@@ -5,12 +5,27 @@
 @orange: #F19F33;
 @red-orange: #CE5F0D;
 
+@brand-primary:  @blue;
+@brand-success:  #5cb85c;
+@brand-info:     @cyan;
+@brand-warning:  @orange;
+@brand-danger:   @red-orange;
+
 /* Gray palette */
 @gray: #515151;
 @lt-gray: #efefef;
 @dark-gray: #383838;
 @super-dark: darken(@dark-gray, 5%);
 @white: #FFFFFF;
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+
+@font-family-sans-serif:  'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+@font-family-serif:       'PT Sans', Georgia, Times New Roman, Times, serif;
+
+@headings-font-family:    @font-family-serif;
+@headings-font-weight:    400;
 
 body {
   background-color: @lt-gray;
@@ -20,4 +35,9 @@ hr {
 }
 .badge {
   vertical-align: middle;
+}
+.label {
+  font-size: 40%;
+  vertical-align: middle;
+  font-weight: 600;
 }

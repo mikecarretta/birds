@@ -16,10 +16,13 @@
   margin: 0 0 0.5em 0;
   a {
     color: @dark-gray;
+    &:hover {
+      color: @blue;
+      text-decoration: none;
+    }
   }
-  a:hover {
-    color: @blue;
-    text-decoration: none;
+  .btn-primary {
+    color: #fff;
   }
 }
 .inner {
@@ -27,7 +30,7 @@
   overflow: hidden;
   padding: 0.5em;
 }
-figure {
+.inner-img {
   display: table-cell;
   vertical-align: middle;
   width: 40%;
@@ -67,7 +70,7 @@ figure {
     display: block;
     width: auto;
   }
-  figure {
+  .inner-img {
     img {
       padding-right: 0;
     }
@@ -93,9 +96,6 @@ figure {
 .birds {
   padding-bottom: 1.5em;
 }
-.attachment-birds-lg {
-  padding-bottom: 3em;
-}
 .widgets {
   font-size: 16px;
   padding-bottom: 3em;
@@ -104,4 +104,11 @@ figure {
     padding-bottom: 1em;
     margin-bottom: 1em;
   }
+}
+/* Single birds post type page - responsive large feature image */
+.attachment-birds-lg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  padding-bottom: 3em;
 }

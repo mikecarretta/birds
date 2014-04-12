@@ -184,6 +184,10 @@ function ik_pagination($html) {
 require get_template_directory() . '/inc/bird-post.php';
 // Portfolio Post Type Functions
 require get_template_directory() . '/inc/portfolio-post.php';
+// Custom Widgets.
+require get_template_directory() . '/inc/custom-widgets.php';
+
+// _s includes
 // Custom template tags for this theme.
 require get_template_directory() . '/inc/template-tags.php';
 // Custom functions that act independently of the theme templates.

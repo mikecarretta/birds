@@ -12,13 +12,22 @@ get_header(); ?>
 
 		<div id="primary" class="container">
 			<div class="row">
-		  	<div class="col-md-12">
+				<div class="col-md-12">
+					<header class="page-header">
+						<h1 class="page-header">
+                <?php printf(get_search_query()); ?> <span class="label label-info">
+                  <?php _e( 'Search Results', 'birds' ); ?></span>
+              </h1>
+					</header><!-- .page-header -->
+				</div>
+			</div>
+		</div>
+
+		<div id="primary" class="container">
+			<div class="row">
+		  	<div class="col-md-9">
 
 				<?php if ( have_posts() ) : ?>
-
-					<header class="page-header">
-						<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'birds' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-					</header><!-- .page-header -->
 
 					<?php /* Start the Loop */ ?>
 					<?php while ( have_posts() ) : the_post(); ?>
@@ -26,10 +35,20 @@ get_header(); ?>
 						<?php get_template_part( 'content', 'search' ); ?>
 
 					<?php endwhile; ?>
+					</div>
+
+					<div class="col-md-3">
+						<?php get_sidebar(); ?>
+					</div>
 
 					<div class="row">
 		        <div class="col-md-12">
-		          <?php birds_post_nav(); ?>
+		          <?php if (function_exists('wp_pagenavi') ) {
+			              	wp_pagenavi();
+			              } else {
+			                birds_paging_nav();
+			              }
+			        ?>
 		        </div>
 		      </div>
 

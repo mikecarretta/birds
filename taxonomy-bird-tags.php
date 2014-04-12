@@ -13,7 +13,8 @@
           <section class="post_content birds" itemprop="articleBody">
             <header>
               <h1 class="page-header">
-                <?php single_tag_title(); ?> <small><?php printf( __( 'Bird Family', 'birds' ) ); ?></small>
+                <?php single_tag_title(); ?> <span class="label label-info">
+                  <?php _e( 'Bird Tag', 'birds' ); ?></span>
               </h1>
             </header>
             <ul class="list img-list">
@@ -42,7 +43,7 @@
               <li id="post-<?php the_ID(); ?>">
 
                 <a href="<?php the_permalink() ?>" class="inner" title="<?php the_title_attribute(); ?>">
-                  <figure>
+                  <figure class="inner-img">
                     <?php the_post_thumbnail( $thumb ); ?>
                   </figure>
 
