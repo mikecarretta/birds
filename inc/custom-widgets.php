@@ -63,7 +63,10 @@ class CustomPostWidget extends WP_Widget
 		'order' => 'DESC',
 	);
 	query_posts( $args );
-
+?>
+<div class="row">
+<div class="col-lg-12">
+<?php
 	/* The Widget Loop */
 	if (have_posts()) :
 	while (have_posts()) : the_post();
@@ -74,7 +77,10 @@ class CustomPostWidget extends WP_Widget
 <?php
 	endwhile;
 	endif;
-
+?>
+</div>
+</div>
+<?php
 	/* Reset the Query */
 	wp_reset_query();
 

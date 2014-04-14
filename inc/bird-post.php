@@ -2,7 +2,7 @@
 
 // Add new post type for Bird List
 add_action('init', 'bird_list_init');
-function bird_list_init() 
+function bird_list_init()
 {
 	$birds_labels = array(
 		'name' => _x('Birds', 'post type general name'),
@@ -15,14 +15,14 @@ function bird_list_init()
 		'view_item' => __('View birds'),
 		'search_items' => __('Search birds'),
 		'not_found' =>  __('No birds found'),
-		'not_found_in_trash' => __('No birds found in trash'), 
+		'not_found_in_trash' => __('No birds found in trash'),
 		'parent_item_colon' => ''
 	);
 	$args = array(
 		'labels' => $birds_labels,
 		'public' => true,
 		'publicly_queryable' => true,
-		'show_ui' => true, 
+		'show_ui' => true,
 		'query_var' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
@@ -30,28 +30,12 @@ function bird_list_init()
 		'menu_position' => 4,
 		'supports' => array('title','editor','author','thumbnail','excerpt','comments','custom-fields'),
 		'has_archive' => 'birds'
-	); 
+	);
 	register_post_type('birds',$args);
 }
-// Add new Custom Post Type icons
-add_action( 'admin_head', 'bird_icon' );
-function bird_icon() {
-?>
-	<style type="text/css" media="screen">
-		#menu-posts-birds .wp-menu-image {
-			background: url(<?php bloginfo('url') ?>/wp-content/themes/bird-portfolio/images/birds-icon.png) no-repeat 6px 6px !important;
-		}
-		#menu-posts-birds:hover .wp-menu-image, #menu-posts-birds.wp-has-current-submenu .wp-menu-image {
-			background-position:6px -16px !important;
-		}
-		.icon32-posts-birds {
-			background: url(<?php bloginfo('url') ?>/wp-content/themes/bird-portfolio/images/birds-32x32.png) no-repeat !important;
-		}
-    </style>
-<?php }
 // Add custom taxonomies
 add_action( 'init', 'bird_taxonomies', 0 );
-function bird_taxonomies() 
+function bird_taxonomies()
 {
 	// Bird Order
 	$bird_order_labels = array(
@@ -62,7 +46,7 @@ function bird_taxonomies()
 		'most_used_items' => null,
 		'parent_item' => null,
 		'parent_item_colon' => null,
-		'edit_item' => __( 'Edit bird order' ), 
+		'edit_item' => __( 'Edit bird order' ),
 		'update_item' => __( 'Update bird order' ),
 		'add_new_item' => __( 'Add new bird order' ),
 		'new_item_name' => __( 'New bird order' ),
@@ -85,7 +69,7 @@ function bird_taxonomies()
 		'most_used_items' => null,
 		'parent_item' => null,
 		'parent_item_colon' => null,
-		'edit_item' => __( 'Edit bird family' ), 
+		'edit_item' => __( 'Edit bird family' ),
 		'update_item' => __( 'Update bird family' ),
 		'add_new_item' => __( 'Add new bird family' ),
 		'new_item_name' => __( 'New bird family' ),
@@ -108,7 +92,7 @@ function bird_taxonomies()
 		'most_used_items' => null,
 		'parent_item' => null,
 		'parent_item_colon' => null,
-		'edit_item' => __( 'Edit bird name' ), 
+		'edit_item' => __( 'Edit bird name' ),
 		'update_item' => __( 'Update bird name' ),
 		'add_new_item' => __( 'Add new bird name' ),
 		'new_item_name' => __( 'New bird name' ),
@@ -121,7 +105,7 @@ function bird_taxonomies()
 		'show_ui' => true,
 		'query_var' => true,
 		'rewrite' => array('slug' => 'bird-name' )
-	));	
+	));
 	// Tags
 		$bird_tags_labels = array(
 		'name' => _x( 'Bird Tags', 'taxonomy general name' ),
@@ -132,7 +116,7 @@ function bird_taxonomies()
 		'most_used_items' => null,
 		'parent_item' => null,
 		'parent_item_colon' => null,
-		'edit_item' => __( 'Edit bird tag' ), 
+		'edit_item' => __( 'Edit bird tag' ),
 		'update_item' => __( 'Update bird tag' ),
 		'add_new_item' => __( 'Add new bird tags' ),
 		'new_item_name' => __( 'New bird tag name' ),
@@ -152,7 +136,7 @@ function bird_taxonomies()
 }
 add_action("manage_posts_custom_column",  "birds_custom_columns");
 add_filter("manage_edit-birds_columns", "birds_edit_columns");
- 
+
 function birds_edit_columns($columns){
   	$columns = array(
     	"cb" => "<input type=\"checkbox\" />",
@@ -214,33 +198,33 @@ if ( !function_exists('fb_AddThumbColumn') && function_exists('add_theme_support
  * Add Bird count to "Right Now" Dashboard Widget
 */
 function add_bird_counts() {
-        if ( ! post_type_exists( 'birds' ) ) {
-             return;
-        }
+  if ( ! post_type_exists( 'birds' ) ) {
+       return;
+  }
 
-        $num_posts = wp_count_posts( 'birds' );
-        $num = number_format_i18n( $num_posts->publish );
-        $text = _n( 'Birds', 'Birds', intval($num_posts->publish) );
-        if ( current_user_can( 'edit_posts' ) ) {
-            $num = "<a href='edit.php?post_type=birds'>$num</a>";
-            $text = "<a href='edit.php?post_type=birds'>$text</a>";
-        }
-        echo '<td class="first b b-birds">' . $num . '</td>';
-        echo '<td class="t birds">' . $text . '</td>';
-        echo '</tr>';
+  $num_posts = wp_count_posts( 'birds' );
+  $num = number_format_i18n( $num_posts->publish );
+  $text = _n( 'Birds', 'Birds', intval($num_posts->publish) );
+  if ( current_user_can( 'edit_posts' ) ) {
+      $num = "<a href='edit.php?post_type=birds'>$num</a>";
+      $text = "<a href='edit.php?post_type=birds'>$text</a>";
+  }
+  echo '<td class="first b b-birds">' . $num . '</td>';
+  echo '<td class="t birds">' . $text . '</td>';
+  echo '</tr>';
 
-        if ($num_posts->pending > 0) {
-            $num = number_format_i18n( $num_posts->pending );
-            $text = _n( 'Bird Item Pending', 'Bird Items Pending', intval($num_posts->pending) );
-            if ( current_user_can( 'edit_posts' ) ) {
-                $num = "<a href='edit.php?post_status=pending&post_type=birds'>$num</a>";
-                $text = "<a href='edit.php?post_status=pending&post_type=birds'>$text</a>";
-            }
-            echo '<td class="first b b-birds">' . $num . '</td>';
-            echo '<td class="t birds">' . $text . '</td>';
+  if ($num_posts->pending > 0) {
+      $num = number_format_i18n( $num_posts->pending );
+      $text = _n( 'Bird Item Pending', 'Bird Items Pending', intval($num_posts->pending) );
+      if ( current_user_can( 'edit_posts' ) ) {
+          $num = "<a href='edit.php?post_status=pending&post_type=birds'>$num</a>";
+          $text = "<a href='edit.php?post_status=pending&post_type=birds'>$text</a>";
+      }
+      echo '<td class="first b b-birds">' . $num . '</td>';
+      echo '<td class="t birds">' . $text . '</td>';
 
-            echo '</tr>';
-        }
+      echo '</tr>';
+  }
 }
 add_action( 'right_now_content_table_end', 'add_bird_counts' );
 ?>

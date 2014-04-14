@@ -35,17 +35,15 @@ $largePhoto = 'birds-lg';
       </div>
 
       <div class="col-md-3 widgets">
-        <h3>Bird Meta Data</h3>
+        <h3>Portfolio Meta Data</h3>
         <div class="entry-meta-custom">
-          <?php if (get_the_term_list( $post->ID, 'bird-order' ) != null ) { ?>
-            <div>Order: <?php echo get_the_term_list( $post->ID, 'bird-order', '', ', ', '' ); ?></div>
-          <?php } ?>
-          <?php if (get_the_term_list( $post->ID, 'bird-family' ) != null ) { ?>
-            <div>Family: <?php echo get_the_term_list( $post->ID, 'bird-family', '', ', ', '' ); ?></div>
-          <?php } ?>
-          <?php if (get_the_term_list( $post->ID, 'bird-tags' ) != null ) { ?>
-            <div>Tags: <?php echo get_the_term_list( $post->ID, 'bird-tags', '', ', ', '' ); ?></div>
-          <?php } ?>
+          <?php if (get_the_term_list( $post->ID, 'portfolio_category' ) != null ) : ?>
+            <div>Category: <?php echo get_the_term_list( $post->ID, 'portfolio_category', '', ', ', '' ); ?></div>
+            <?php endif; ?>
+
+            <?php if (get_the_term_list( $post->ID, 'portfolio_tag' ) != null ) : ?>
+            <div>Portfolio Tags: <?php echo get_the_term_list( $post->ID, 'portfolio_tag', '', ', ', '' ); ?></div>
+            <?php endif; ?>
 
         </div><!-- END.entry-meta-custom -->
       </div>
@@ -58,7 +56,7 @@ $largePhoto = 'birds-lg';
 
         if (function_exists('exifography_display_exif')) {
         ?>
-          <h3>Feature Image Exif</h3>
+          <h3>Portfolio Image Exif</h3>
         <?php echo exifography_display_exif(); ?>
         <?php } ?>
 

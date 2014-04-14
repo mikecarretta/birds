@@ -13,7 +13,7 @@
 
        <a href="<?php echo esc_url( __( 'http://wordpress.org/', 'birds' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'birds' ), 'WordPress' ); ?></a>
 		   <span class="sep"> | </span>
-		   <?php printf( __( 'Theme: %1$s by %2$s.', 'birds' ), 'birds', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
+		   <?php printf( __( '%1$s developed by %2$s, Starter Theme: %3$s.', 'birds' ), '<a href="https://github.com/mikecarretta/birds" rel="designer">Birds Theme</a>', '<a href="http://mikecarretta.github.io/" rel="designer">Mike Carretta</a>', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
 	    </div>
     </div>
   </div><!-- #site-info -->

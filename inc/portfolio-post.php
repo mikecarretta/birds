@@ -3,7 +3,7 @@
  * Enable Custom Post Types for Portfolio Items
  * http://codex.wordpress.org/Function_Reference/register_post_type
  */
- 
+
 // Registers the new post type and taxonomy
 // Inspired by http://wptheming.com/portfolio-post-type/
 
@@ -32,12 +32,12 @@ function wpt_portfolio_posttype() {
 		'has_archive' => true
 	);
 	register_post_type('portfolio',$args);
-	
+
 	/**
 	 * Register a taxonomy for Portfolio Tags
 	 * http://codex.wordpress.org/Function_Reference/register_taxonomy
-	 */	 
-	
+	 */
+
 	$taxonomy_portfolio_tag_labels = array(
 		'name' => _x( 'Portfolio Tags', 'bird-portfolio' ),
 		'singular_name' => _x( 'Portfolio Tag', 'bird-portfolio' ),
@@ -55,7 +55,7 @@ function wpt_portfolio_posttype() {
 		'choose_from_most_used' => _x( 'Choose from the most used portfolio tags', 'bird-portfolio' ),
 		'menu_name' => _x( 'Portfolio Tags', 'bird-portfolio' )
 	);
-	
+
 	$taxonomy_portfolio_tag_args = array(
 		'labels' => $taxonomy_portfolio_tag_labels,
 		'public' => true,
@@ -66,9 +66,9 @@ function wpt_portfolio_posttype() {
 		'rewrite' => true,
 		'query_var' => true
 	);
-	
+
 	register_taxonomy( 'portfolio_tag', array( 'portfolio' ), $taxonomy_portfolio_tag_args );
-	
+
 	/**
 	 * Register a taxonomy for Portfolio Categories
 	 * http://codex.wordpress.org/Function_Reference/register_taxonomy
@@ -91,7 +91,7 @@ function wpt_portfolio_posttype() {
 		'choose_from_most_used' => _x( 'Choose from the most used portfolio categories', 'bird-portfolio' ),
 		'menu_name' => _x( 'Portfolio Categories', 'bird-portfolio' ),
     );
-	
+
     $taxonomy_portfolio_category_args = array(
 		'labels' => $taxonomy_portfolio_category_labels,
 		'public' => true,
@@ -102,7 +102,7 @@ function wpt_portfolio_posttype() {
 		'rewrite' => true,
 		'query_var' => true
     );
-	
+
     register_taxonomy( 'portfolio_category', array( 'portfolio' ), $taxonomy_portfolio_category_args );
 }
 
@@ -114,7 +114,7 @@ add_theme_support( 'post-thumbnails', array( 'portfolio' ) );
 
 //  Add Columns to Portfolio Edit Screen
 //  http://wptheming.com/2010/07/column-edit-pages/
- 
+
 function portfolioposttype_edit_columns($portfolio_columns){
 	$portfolio_columns = array(
 		"cb" => "<input type=\"checkbox\" />",
@@ -131,32 +131,32 @@ function portfolioposttype_edit_columns($portfolio_columns){
 }
 
 add_filter( 'manage_edit-portfolio_columns', 'portfolioposttype_edit_columns' );
- 
+
 function portfolioposttype_columns_display($portfolio_columns, $post_id){
 
 	switch ( $portfolio_columns )
-	
+
 	{
-			
+
 			// Display the portfolio tags in the column view
 			case "portfolio_category":
-			
+
 			if ( $category_list = get_the_term_list( $post_id, 'portfolio_category', '', ', ', '' ) ) {
 				echo $category_list;
 			} else {
 				echo __('None', 'portfolioposttype');
 			}
-			break;	
-			
+			break;
+
 			// Display the portfolio tags in the column view
 			case "portfolio_tag":
-			
+
 			if ( $tag_list = get_the_term_list( $post_id, 'portfolio_tag', '', ', ', '' ) ) {
 				echo $tag_list;
 			} else {
 				echo __('None', 'portfolioposttype');
 			}
-			break;			
+			break;
 	}
 }
 
@@ -199,8 +199,8 @@ add_action( 'right_now_content_table_end', 'add_portfolio_counts' );
 /**
  * Add contextual help menu
  */
- 
-function portfolioposttype_add_help_text( $contextual_help, $screen_id, $screen ) { 
+
+function portfolioposttype_add_help_text( $contextual_help, $screen_id, $screen ) {
 	if ( 'portfolio' == $screen->id ) {
 		$contextual_help =
 		'<p>' . __('The title field and the big Post Editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen.') . '</p>' .
@@ -215,7 +215,7 @@ function portfolioposttype_add_help_text( $contextual_help, $screen_id, $screen 
 		'<p>' . __('<a href="http://codex.wordpress.org/Posts_Add_New_Screen" target="_blank">Documentation on Writing and Editing Posts</a>') . '</p>' .
 		'<p>' . __('<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>';
   } elseif ( 'edit-portfolio' == $screen->id ) {
-    $contextual_help = 
+    $contextual_help =
 	    '<p>' . __('You can customize the display of this screen in a number of ways:') . '</p>' .
 		'<ul>' .
 		'<li>' . __('You can hide/display columns based on your needs and decide how many posts to list per screen using the Screen Options tab.') . '</li>' .
@@ -240,23 +240,5 @@ function portfolioposttype_add_help_text( $contextual_help, $screen_id, $screen 
 }
 
 add_action( 'contextual_help', 'portfolioposttype_add_help_text', 10, 3 );
-
-// Add new Custom Post Type icons
-function portfolioposttype_portfolio_icons() {
-?>
-	<style type="text/css" media="screen">
-		#menu-posts-portfolio .wp-menu-image {
-			background: url(<?php bloginfo('url') ?>/wp-content/themes/bird-portfolio/images/portfolio-icon.png) no-repeat 6px 6px !important;
-		}
-		#menu-posts-portfolio:hover .wp-menu-image, #menu-posts-portfolio.wp-has-current-submenu .wp-menu-image {
-			background-position:6px -16px !important;
-		}
-		.icon32-posts-portfolio {
-			background: url(<?php bloginfo('url') ?>/wp-content/themes/bird-portfolio/images/portfolio-32x32.png) no-repeat !important;
-		}
-    </style>
-<?php }
-
-add_action( 'admin_head', 'portfolioposttype_portfolio_icons' );
 
 ?>
