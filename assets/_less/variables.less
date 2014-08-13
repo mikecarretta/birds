@@ -19,13 +19,18 @@
 @white: #FFFFFF;
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600);
-@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,700);
 
 @font-family-sans-serif:  'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
-@font-family-serif:       'PT Sans', Georgia, Times New Roman, Times, serif;
-
+@font-family-serif:       'Merriweather', Georgia, Times New Roman, Times, serif;
 @headings-font-family:    @font-family-serif;
 @headings-font-weight:    400;
+
+//** By default, this inherits from the `<body>`.
+@headings-font-family:    @font-family-serif;
+@headings-font-weight:    400;
+@headings-line-height:    1.1;
+@headings-color:          @gray-dark;
 
 body {
   background-color: @lt-gray;
@@ -33,6 +38,19 @@ body {
 hr {
   border-top: 1px solid #ccc;
 }
+
+// home page buttons
+.btn-ghost {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  &:hover {
+    color: #515151;
+    background: rgba(255, 255, 255, 0.8);
+  }
+}
+
+// total bird count badge
 .badge {
   vertical-align: middle;
 }
@@ -41,3 +59,17 @@ hr {
   vertical-align: middle;
   font-weight: 600;
 }
+
+// pagination
+.pagination .current {
+  background-color: #575757;
+  color: #fff;
+}
+//== Bootstrap Pagination Overwrite
+@pagination-color:                     @link-color;
+@pagination-bg:                        #e5e5e5;
+@pagination-border:                    @lt-gray;
+
+@pagination-hover-color:               @white;
+@pagination-hover-bg:                  @gray;
+@pagination-hover-border:              @lt-gray;

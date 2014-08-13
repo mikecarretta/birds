@@ -48,7 +48,15 @@
           </figure>
 
           <div class="li-text">
-            <h3><?php the_title() ?></h3>
+            <h3>
+              <?php
+                $thetitle = $post->post_title;
+                $getlength = strlen($thetitle);
+                $thelength = 20;
+                echo substr($thetitle, 0, $thelength);
+                if ($getlength > $thelength) echo "...";
+                ?>
+            </h3>
           </div>
         </a>
       </li>
